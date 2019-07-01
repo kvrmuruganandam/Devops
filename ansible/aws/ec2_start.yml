@@ -1,0 +1,10 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+    - name: ec2 stopping 
+      ec2:
+        region: us-east-2
+        instance_ids: i-01ef58b928ea84898
+        state: running

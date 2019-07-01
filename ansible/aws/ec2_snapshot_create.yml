@@ -1,0 +1,12 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+    - name: Create snapshot with below given name
+      ec2_snapshot:
+          region: us-east-2
+          snapshot_tags: 
+                   Name: test
+          volume_id: vol-085a74b9d66383fe8
+          description: snapshot of ec2 volume

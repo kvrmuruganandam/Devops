@@ -17,14 +17,9 @@ service 'nginx' do
 action :restart
 end
 
-execute 'httpd_firewall' do
-  command '/usr/bin/firewall-cmd  --permanent --zone public --add-service http'
-  ignore_failure true
+execute 'firewall-rule' do
+command '
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --reload '
+only_if { node['packages'].keys.include? "firewalld" }
 end
-
-execute 'reload_firewall' do
-  command '/usr/bin/firewall-cmd --reload'
-  ignore_failure true
-end
-
-
