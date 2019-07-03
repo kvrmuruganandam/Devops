@@ -1,0 +1,22 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+    - name: ec2 creation
+      ec2:
+        key_name: key
+        region: us-east-2
+        instance_type: t2.micro
+        instance_tags:
+          Name: test
+        image: ami-0f2b4fc905b0bd1f1
+        wait: yes
+        group: default
+        count: 1
+        state: present
+        volumes:
+           - device_name: /dev/sda1
+             volume_type: gp2
+             volume_size: 10
+             delete_on_termination: True

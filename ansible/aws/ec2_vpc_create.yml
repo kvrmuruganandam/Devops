@@ -1,0 +1,54 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+     - name: Create VPC with below given name
+       ec2_vpc_net:
+        name: test
+        state: present
+        region: us-east-2
+        cidr_block: 172.22.0.0/16
+        resource_tags: 
+              Name: Test
+       register: my_vpc
+
+     - name: Create subnet for VPC
+       ec2_vpc_subnet:
+          state: present
+          vpc_id: "{{ my_vpc.vpc.id }}"
+          cidr: 172.22.1.0/20
+          az: us-east-2a
+   
+     - name: Create Internet gateway for VPC
+       ec2_vpc_igw:
+        state: present
+        region: us-east-2
+        vpc_id: "{{ my_vpc.vpc.id }}"
+        resource_tags:
+              Name: Test
+       register: my_igw
+     
+     - name: getting route table id
+       ec2_vpc_route_table_facts:
+           region: us-east-2
+           filters:
+              vpc-id: "{{ my_vpc.vpc.id }}"
+       register: vpc_route_tables
+
+
+     - name: create route table entry
+       ec2_vpc_route_table:
+            vpc_id: "{{ my_vpc.vpc.id }}"
+            route_table_id: "{{ vpc_route_tables.route_tables[0].id }}"
+            lookup: id
+            region: us-east-2
+            subnets:
+                - 172.22.1.0/20
+            routes:
+                - dest: 0.0.0.0/0
+                  gateway_id: "{{ my_igw.gateway_id }}"
+
+
+    
+                             

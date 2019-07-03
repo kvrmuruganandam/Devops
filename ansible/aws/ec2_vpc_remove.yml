@@ -1,0 +1,12 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+     - name: Create VPC with below given name
+       ec2_vpc_net:
+        name: test
+        vpc_id: vpc-ef4d61
+        region: us-east-2
+        cidr_block: 172.22.0.0/16
+        state: absent

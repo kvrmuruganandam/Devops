@@ -1,0 +1,22 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+    - name: Create New security group with below given name
+      ec2_group:
+          name: test
+          description: Security Group for Newly Created EC2 Instance
+          region: us-east-2
+          rules:
+            - proto: tcp
+              from_port: 22
+              to_port: 22
+              cidr_ip: 0.0.0.0/0
+            - proto: tcp
+              from_port: 80
+              to_port: 80
+              cidr_ip: 0.0.0.0/0
+          rules_egress:
+            - proto: all
+              cidr_ip: 0.0.0.0/0

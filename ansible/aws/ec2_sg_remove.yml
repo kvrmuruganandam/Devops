@@ -1,0 +1,10 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+    - name: Remove security group with below given name
+      ec2_group:
+          name: test
+          region: us-east-2
+          state: absent
