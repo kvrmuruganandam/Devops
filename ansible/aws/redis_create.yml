@@ -1,0 +1,16 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+     - name: Create redis  with below given name
+       elasticache:
+          name: "test1-please-delete"
+          state: present
+          engine: redis 
+          cache_engine_version: 3.2.4
+          node_type: cache.t2.micro
+          num_nodes: 1
+          cache_port: 6379
+          region: us-east-2
+

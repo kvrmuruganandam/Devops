@@ -1,0 +1,16 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+     - name: Create RDS with below given name
+       rds:
+         command: create
+         region: us-east-2
+         instance_name: new-database
+         db_engine: MySQL
+         size: 10
+         instance_type: db.t2.micro
+         username: mysql_admin
+         password: 1nsecure
+         wait: yes

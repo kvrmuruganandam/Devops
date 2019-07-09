@@ -1,0 +1,11 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+     - name: Remove memcached with below given name
+       elasticache:
+          name: "test-please-delete"
+          state: absent
+          region: us-east-2
+

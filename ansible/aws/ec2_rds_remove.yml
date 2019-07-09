@@ -1,0 +1,11 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+     - name: Remove RDS with below given name
+       rds:
+         command: delete
+         region: us-east-2
+         instance_name: new-database
+         wait: yes

@@ -1,0 +1,16 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+     - name: Create memcached with below given name
+       elasticache:
+          name: "test1-please-delete"
+          state: present
+          engine: memcached
+          cache_engine_version: 1.4.24
+          node_type: cache.t2.micro
+          num_nodes: 1
+          cache_port: 11211
+          region: us-east-2
+
