@@ -1,0 +1,25 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+      - name: create launch config
+        ec2_lc:
+           name: my_new_lc
+           image_id: ami-0f2b4fc905b0bd1f1
+           key_name: key
+           region: us-east-2
+           security_groups: default
+           instance_type: t2.micro
+           state: present
+      - name: create auto scaling group
+        ec2_asg:
+           name: myasg
+           launch_config_name: my_new_lc
+           health_check_period: 60
+           health_check_type: ELB
+           replace_all_instances: yes
+           min_size: 1
+           max_size: 1
+           desired_capacity: 1
+           region: us-east-2

@@ -1,0 +1,17 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+      - name: create auto scaling group
+        ec2_asg:
+           name: myasg
+           region: us-east-2
+           state: absent
+
+      - name: remove launch config
+        ec2_lc:
+           name: my_new_lc
+           region: us-east-2
+           state: absent
+
