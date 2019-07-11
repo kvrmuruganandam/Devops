@@ -1,0 +1,11 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+        - name: Create multiple directories
+          file: path={{item}} state=directory
+          with_items:
+             - '/home/test1'
+             - '/home/test2'
+             - '/home/test3'

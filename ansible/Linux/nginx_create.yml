@@ -1,0 +1,10 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+         - name: Install Package
+           yum: name=nginx state=present
+  
+         - name: Start nginx service
+           service: name=nginx state=started

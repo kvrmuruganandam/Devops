@@ -1,0 +1,26 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+         - name: Install Package
+           yum: name=httpd state=present
+  
+         - name: Start httpd service
+           service: name=httpd state=started
+
+         - name: create index file with content example
+          copy:
+             dest: "/var/www/html/index.html"
+             content: |
+               Welcome To Apache Web Server  
+         
+         - name: Create firewall rule
+           firewalld:
+             port: 80/tcp
+             permanent: yes
+             state: enabled
+
+         - name: reload firewall
+           command: firewall-cmd --reload
+~                                                  

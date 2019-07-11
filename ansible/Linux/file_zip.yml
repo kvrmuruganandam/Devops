@@ -1,0 +1,13 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+        - name: Ansible zip multiple files example
+          archive:
+            path:
+              - /home/ansible/test1.txt
+              - /home/ansible/test2.txt
+            dest: /home/ansible/test.zip
+            format: zip
+

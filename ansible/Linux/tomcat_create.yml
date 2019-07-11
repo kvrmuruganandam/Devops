@@ -1,0 +1,10 @@
+---
+  - hosts: localhost
+    connection: local
+    gather_facts: False
+    tasks:
+         - name: Install Package
+           yum: name=tomcat state=present
+  
+         - name: Start tomcat service
+           service: name=tomcat state=started
