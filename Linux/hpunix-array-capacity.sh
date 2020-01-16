@@ -5,8 +5,6 @@
 # **************************************************
 # Script Name           :       "hpunix.sh"
 # Author                :       "Muruganandam"
-# Created Date          :       "2.10.2019"
-# Latest Update         :       "9.10.2019"
 # Version               :       "1.0"
 # Run Script            :       "./hpunix.sh"
 #
