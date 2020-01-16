@@ -6,7 +6,7 @@
 # Script Name           :       "linux.sh"
 # Author                :       "Muruganandam"
 # Version               :       "1.0"
-# Run Script            :       "./linux.sh"
+# Run Script            :       "./linux-array-capacity.sh"
 #
 # *********************************************
 # ***            Description                ***
