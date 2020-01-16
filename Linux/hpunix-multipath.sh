@@ -1,3 +1,4 @@
+#! /bin/bash
 untar_logs(){
 #To Get Log files as List
 VAR_LOG_FILES=`ls -I $(basename $0) -I test|tr "\n" " "`
