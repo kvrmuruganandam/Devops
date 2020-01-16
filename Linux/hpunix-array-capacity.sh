@@ -7,10 +7,7 @@
 # Author                :       "Muruganandam"
 # Created Date          :       "2.10.2019"
 # Latest Update         :       "9.10.2019"
-# Copyright             :       "Copyright 2019, The ZENfra Project"
-# License               :       "VTG"
 # Version               :       "1.0"
-# Email                 :       "migrationteam@virtualtechgurus.com"
 # Run Script            :       "./hpunix.sh"
 #
 # *********************************************
